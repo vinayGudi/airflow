@@ -38,6 +38,6 @@ variable "private_subnet_2" {
   type = string
 }
 
-variable "source_bucket_arn " {
+variable "source_bucket_arn" {
   type = string
 }
