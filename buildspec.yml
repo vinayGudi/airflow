@@ -1,0 +1,33 @@
+version: 0.2
+
+phases:
+  build:
+    commands:
+      - apt-get install unzip
+      - wget https://releases.hashicorp.com/terraform/1.0.0/terraform_1.0.0_linux_amd64.zip
+      - unzip terraform_1.0.0_linux_amd64.zip
+      - mv ./terraform /usr/local/bin/
+      - python3 -m ensurepip
+      - pip3 install --no-cache --upgrade pip setuptools
+      - pip3 install awscli
+      # - aws configure set aws_access_key_id $AWS_ACCESS_KEY_ID
+      # - aws configure set aws_secret_access_key $AWS_SECRET_ACCESS_KEY
+      # - aws configure set region $AWS_DEFAULT_REGION
+      # - cd infra
+      # - aws s3 cp s3://clixtream-infra-state-bucket/clixtream.pem ./
+      # - chmod 400 clixtream.pem
+      - terraform init -input=false -backend-config=environment/dev/s3-bucket.tfvars
+      - terraform plan -out dev-plan.tfplan -var-file=environment/dev/variables.tfvars -input=false
+      # - aws s3 cp $CI_ENVIRONMENT_NAME-plan.tfplan s3://clixtream-infra-state-bucket/infra/
+  # build:
+  #   commands:
+  #     - terraform init  
+#   post_build:
+#     commands:
+#       - echo Build completed on `date`
+#       - mvn package
+# artifacts:
+#   files:
+#     - target/my-app-1.0-SNAPSHOT.jar
+#     - appspec.yml
+#   discard-paths: yes
