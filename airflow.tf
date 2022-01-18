@@ -35,7 +35,7 @@ resource "aws_mwaa_environment" "example" {
 
   network_configuration {
     security_group_ids = [var.sg_id]
-    subnet_ids         = [var.private_subnet_1, var.private_subent_2]
+    subnet_ids         = [var.private_subnet_1, var.private_subnet_2]
   }
 
   source_bucket_arn = var.source_bucket_arn
