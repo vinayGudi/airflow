@@ -1,7 +1,7 @@
 dag_s3_path        = "external/inviz_search_Platform/dev/airflow/dags/"
 aws_region         = "ap-south-1"
 execution_role_arn = "arn:aws:iam::033812576448:role/airflow-role"
-name               = "insearch-dev-airflow"
+name               = "insearch-dev-test"
 sg_id              = "sg-0f3f87060e17b563f"
 private_subnet_1   = "subnet-03fd32bba7e068032"
 private_subnet_2   = "subnet-0a210c0dc63c87fc5"
